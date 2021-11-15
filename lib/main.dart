@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task_planner_app/screens/home_page.dart';
+import 'package:flutter_task_planner_app/screens/sign_in.dart';
 import 'package:flutter_task_planner_app/theme/colors/light_colors.dart';
 import 'package:flutter/services.dart';
 
@@ -21,12 +22,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         textTheme: Theme.of(context).textTheme.apply(
-              bodyColor: LightColors.kDarkBlue,
-              displayColor: LightColors.kDarkBlue,
-              fontFamily: 'Poppins'
-            ),
+            bodyColor: LightColors.kDarkBlue,
+            displayColor: LightColors.kDarkBlue,
+            fontFamily: 'Poppins'),
       ),
-      home: HomePage(),
+      home: SignInPage(),
       debugShowCheckedModeBanner: false,
     );
   }
