@@ -73,8 +73,8 @@ class SignInPageView extends State<SignInPage> {
                           Container(
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/clock.png'))),
+                                    image: AssetImage(
+                                        'assets/images/logo-2.png'))),
                           ))),
                   Positioned(
                       child: FadeAnimation(
