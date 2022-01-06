@@ -11,6 +11,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import 'calendar_page.dart';
 import 'home_page.dart';
+import 'otp_state.dart';
 
 class NextPageSignUpPage  extends StatefulWidget {
   NextPageSignUpPage({ Key key }) : super(key: key);
@@ -139,7 +140,7 @@ class NextPageSignUpView extends State<NextPageSignUpPage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => OtpPage()),
+                              MaterialPageRoute(builder: (context) => Otp(email: 'hafizhkamus13@gmail.com',)),
                             );
                           }))
             ],
