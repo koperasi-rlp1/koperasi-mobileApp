@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_task_planner_app/animation/fade.dart';
-import 'package:flutter_task_planner_app/screens/next_page_sign_up.dart';
 import 'package:flutter_task_planner_app/theme/colors/light_colors.dart';
 import 'package:flutter_task_planner_app/widgets/active_project_card.dart';
 import 'package:flutter_task_planner_app/widgets/my_text_field.dart';
@@ -12,18 +11,14 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'calendar_page.dart';
 import 'home_page.dart';
 
-
-
-class SignUpPage extends StatefulWidget {
-  SignUpPage({Key key, this.title}) : super(key: key);
-
-  final String title;
+class SignPaymentPage  extends StatefulWidget {
+  SignPaymentPage({ Key key }) : super(key: key);
 
   @override
-  SignUpPageView createState() => SignUpPageView();
+  SignPaymentView createState() => SignPaymentView();
 }
 
-class SignUpPageView extends State<SignUpPage> {
+class SignPaymentView extends State<SignPaymentPage> {
 
   @override
   void initState() {
@@ -33,40 +28,10 @@ class SignUpPageView extends State<SignUpPage> {
       DeviceOrientation.portraitDown,
     ]);
   }
-  
-  Text subheading(String title) {
-    return Text(
-      title,
-      style: TextStyle(
-          color: LightColors.kDarkBlue,
-          fontSize: 20.0,
-          fontWeight: FontWeight.w700,
-          letterSpacing: 1.2),
-    );
-  }
-
-  static CircleAvatar calendarIcon() {
-    return CircleAvatar(
-      radius: 25.0,
-      backgroundColor: LightColors.kGreen,
-      child: Icon(
-        Icons.calendar_today,
-        size: 20.0,
-        color: Colors.white,
-      ),
-    );
-  }
-
-   var downwardIcon = Icon(
-      Icons.keyboard_arrow_down,
-      color: Colors.black54,
-    );
-
-
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+   return Scaffold(
       backgroundColor: LightColors.kLightYellow,
       body: SingleChildScrollView(
         child: SafeArea(
@@ -141,11 +106,7 @@ class SignUpPageView extends State<SignUpPage> {
                         child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          MyTextField(label: 'NIP'),
-                          MyTextField(label: 'NAMA LENGKAP'),
-                          MyTextField(label: 'JABATAN'),
-                          MyTextField(label: 'UNIT OPERASIONAL'),
-                          MyTextField(label: 'EMAIL')
+                          MyTextField(label: 'BUKTI PEMBAYARAN')
                         ],
                  ),
                       )),
@@ -174,7 +135,7 @@ class SignUpPageView extends State<SignUpPage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => NextPageSignUpPage()),
+                              MaterialPageRoute(builder: (context) => HomePage()),
                             );
                           }))
             ],
