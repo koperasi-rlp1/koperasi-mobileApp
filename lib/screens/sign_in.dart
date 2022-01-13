@@ -4,6 +4,7 @@ import 'package:flutter_task_planner_app/animation/fade.dart';
 import 'package:flutter_task_planner_app/screens/home_page.dart';
 import 'package:flutter_task_planner_app/screens/sign_up.dart';
 import 'package:flutter_task_planner_app/theme/colors/light_colors.dart';
+import 'package:http/http.dart' as http;
 
 class SignInPage extends StatefulWidget {
   SignInPage({Key key, this.title}) : super(key: key);
@@ -23,6 +24,11 @@ class SignInPageView extends State<SignInPage> {
       DeviceOrientation.portraitDown,
     ]);
   }
+
+  final String baseUrl = "http://127.0.0.1/koperasi-service";
+
+  var username = TextEditingController();
+  var password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -135,17 +141,19 @@ class SignInPageView extends State<SignInPage> {
                                   border: Border(
                                       bottom:
                                           BorderSide(color: Colors.grey[100]))),
-                              child: TextField(
+                              child: TextFormField(
+                                controller: username,
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: "Username",
+                                    hintText: "NIP or Username",
                                     hintStyle:
                                         TextStyle(color: Colors.grey[400])),
                               ),
                             ),
                             Container(
                               padding: EdgeInsets.all(8.0),
-                              child: TextField(
+                              child: TextFormField(
+                                controller: password,
                                 obscureText: true,
                                 enableSuggestions: false,
                                 autocorrect: false,
@@ -180,11 +188,10 @@ class SignInPageView extends State<SignInPage> {
                                 ),
                               )),
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => HomePage()),
-                            );
-                          })),
+                            login();
+                          }
+                        )
+                      ),
                   SizedBox(
                     height: 8,
                   ),
@@ -239,4 +246,24 @@ class SignInPageView extends State<SignInPage> {
     ]);
     super.dispose();
   }
+
+  Future<void> login() async{
+    if(username.text.isNotEmpty){
+      if(password.text.isNotEmpty){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+        // var response = await http.get(Uri.parse(baseUrl+"/api/auth/login"));
+        // if(response.statusCode==200){
+        //   Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+        // } else {
+        //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Invalid Credentials")));
+        // }
+      }
+      else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Isi Password")));
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Isi Usename atau NIP")));
+    }
+  }
 }
+ 
